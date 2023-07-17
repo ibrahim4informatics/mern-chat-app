@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+
+model User {
+  id String @id @default(uuid())
+  username String @unique @db.VarChar(20)
+  email String @unique @db.VarChar(40)
+  password String
+  picture String @default("https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png")
+  chats Chat[]
+  messages Message[]
+
+}
+
+
+model Chat {
+  id String @id @default(uuid())
+  title String @db.VarChar(20)
+  isGroup Boolean @default(false)
+  users User[]
+  last_message_id String? @unique
+  last_message Message? @relation(name: "last_message", fields: [last_message_id], references: [id], onDelete: Cascade )
+  messages Message[]
+}
+
+model Message {
+  id String @id @default(uuid())
+  content String @db.LongText
+  user_id String
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  chat_id String
+  chat Chat @relation(fields: [chat_id], references: [id], onDelete: Cascade)
+  last_at_chat Chat? @relation(name: "last_message")
+  created_at DateTime @default(now())
+}

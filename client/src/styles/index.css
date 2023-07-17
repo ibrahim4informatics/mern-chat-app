@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;800&display=swap');*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'lato', sans-serif;
+}
+
+.aside-chats-container::-webkit-scrollbar{
+    width: 8px;
+    border-radius: 12px;
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, .3);
+}
+
+.aside-chats-container::-webkit-scrollbar-track{
+    background: #e0e0e0;
+    /* margin: 4px; */
+    border-radius: 12px;
+}
+
+.aside-chats-container::-webkit-scrollbar-thumb{
+    background: #e1e9be;
+    border-radius: 12px;
+}
+
+@keyframes error-illustration-animation {
+    0%{
+        transform: translateX(20px);
+    }
+    50%{
+        transform: translateX(-20px);
+    }
+    100%{
+        transform: translateX(20px);
+    }
+}
+.animate-error-page{
+    animation: error-illustration-animation 5s ease infinite;
+}
+
+.error-page-image{
+    object-fit: contain;
+    width: 50%;
+}
