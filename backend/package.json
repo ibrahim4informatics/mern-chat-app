@@ -8,6 +8,9 @@
     "build": "npm install && prisma generate",
     "dev": "nodemon server.js"
   },
+  "engines": {
+  "node": "18.x"
+}
   "author": "Ibrahim",
   "license": "ISC",
   "dependencies": {
